@@ -1,0 +1,311 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #0a0b1f;
+  color: #e6e8f0;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  padding: 24px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Oswald", sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  color: #dfeee7;
+  opacity: 0.8;
+}
+
+.nav a.active {
+  text-decoration: underline;
+  text-decoration-color: #ca9b12;
+}
+
+.logo-header {
+  width: 80px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  background: url("/image/bg5.jpg") center / cover no-repeat;
+  padding: 120px 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 11, 31, 0.95) 0%,
+    rgba(10, 11, 31, 0.75) 55%,
+    rgba(10, 11, 31, 0.9) 100%
+  );
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 40px;
+}
+
+/* ===== HERO MENU ===== */
+.hero-menu {
+  grid-column: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 20px;
+}
+
+.hero-menu a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #dfeee7;
+  opacity: 0.75;
+}
+
+.hero-menu a:hover {
+  opacity: 1;
+  color: #ca9b12;
+}
+
+/* ===== CONTENT ===== */
+.hero-content {
+  grid-column: 3 / span 5;
+  margin-top: 40px;
+}
+
+.hero-content h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 56px;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.hero-content span {
+  font-size: 28px;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.hero-content p {
+  max-width: 520px;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.hero-btn {
+  padding: 14px 36px;
+  background: #ca9b12;
+  color: #0a0b1f;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* ===== HERO CARDS ===== */
+.hero-cards {
+  grid-column: 8 / span 5;
+  position: relative;
+  height: 300px;
+}
+
+.hero-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  transition: 0.25s;
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-card.main {
+  top: 0;
+  left: 0;
+  width: 300px;
+  min-height: 160px;
+  border: 1px solid rgba(202, 155, 18, 0.6);
+}
+
+.hero-card.small.top {
+  top: 20px;
+  right: 0;
+  width: 240px;
+  min-height: 110px;
+}
+
+.hero-card.small.bottom {
+  bottom: 0;
+  right: 20px;
+  width: 260px;
+  min-height: 110px;
+}
+
+.hero-card h4 {
+  margin-bottom: 10px;
+}
+
+.hero-card h5 {
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.hero-card span {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #ca9b12;
+}
+
+/* ===== TOP 7 ===== */
+.top7 {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #0a0b1f 0%, #0d1029 100%);
+}
+
+.top7-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 40px;
+}
+
+/* ===== ЛЕВАЯ ТАБЛИЦА ===== */
+.top7-list {
+  grid-column: 1 / span 3;
+}
+
+.top7-list h3 {
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+
+.top7-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.top7-row span {
+  width: 24px;
+  text-align: right;
+}
+
+.top7-row.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(202, 155, 18, 0.6);
+  box-shadow: inset 0 0 0 1px rgba(202, 155, 18, 0.4);
+}
+
+.top7-row.active span {
+  color: #ca9b12;
+  font-weight: 600;
+}
+
+/* ===== ПРАВАЯ ЧАСТЬ ===== */
+.top7-content {
+  grid-column: 4 / span 9;
+  text-align: center; /* ← ВАЖНО */
+  position: relative;
+
+  display: flex; /* ← добавляем */
+  flex-direction: column;
+  align-items: center; /* ← центр по горизонтали */
+}
+
+.top7-content img {
+  width: 240px;
+  margin-bottom: 24px;
+}
+
+.top7-content h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 28px;
+}
+
+.top7-content p {
+  opacity: 0.8;
+  margin-top: 6px;
+}
+
+/* ===== СТРЕЛКИ ===== */
+.top7-arrows {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.top7-arrows span {
+  font-size: 36px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.top7-arrows span:hover {
+  opacity: 1;
+  color: #ca9b12;
+}
+
+.team-logo {
+  width: 260px;
+  height: 260px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px; /* ← отступ вниз */
+}
+
+.team-logo img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
