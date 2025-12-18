@@ -89,7 +89,7 @@ while ($row = $result->fetch_assoc()) {
       <a href="#footer">Контакты</a>
     </nav>
 
-    <img class="logo-header" src="/image/logo.jpg" alt="logo">
+    <img id = "main" class="logo-header" src="/image/logo.jpg" alt="logo">
   </div>
 </header>
 
@@ -126,7 +126,7 @@ while ($row = $result->fetch_assoc()) {
 
     <!-- LEFT LIST -->
     <div class="top7-list">
-      <h3>Топ-7 La Liga 2015/2016</h3>
+      <h3 id = "teams" >Топ-7 La Liga 2015/2016</h3>
 
       <?php foreach ($teams as $index => $team): ?>
   <div class="top7-row <?= $index === 0 ? 'active' : '' ?>"
@@ -166,7 +166,7 @@ while ($row = $result->fetch_assoc()) {
 
 <section class="records">
   <div class="container">
-    <h2 class="records-title">Сезонные рекорды La Liga 2015/2016</h2>
+    <h2 id = "recordes" class="records-title">Сезонные рекорды La Liga 2015/2016</h2>
     <p class="records-subtitle">Самые яркие достижения игроков и команд</p>
 
   <div class="records-stats">
@@ -240,7 +240,7 @@ while ($row = $result->fetch_assoc()) {
   <div class="container">
 
     <div class="matches-header">
-      <h2>Ключевые матчи сезона</h2>
+      <h2 id = "matches">Ключевые матчи сезона</h2>
       <p>Матчи, которые определили исход Ла Лиги 2015/2016</p>
     </div>
 
@@ -326,7 +326,7 @@ while ($row = $result->fetch_assoc()) {
   <div class="container">
 
     <div class="section-header">
-      <h2>Главные новости сезона</h2>
+      <h2 id = "news">Главные новости сезона</h2>
     </div>
 
     <div class="news-list">
@@ -388,6 +388,55 @@ while ($row = $result->fetch_assoc()) {
 
 </div>
 </section>
+
+<footer id = "footer" class="footer">
+  <div class="container footer-container">
+
+    <!-- ЛОГО -->
+    <div class="footer-logo">
+      <a href = "#main" class = "footer-logo-link">
+      <div class="logo-box">
+        <span class="logo-title">FootEra</span>
+        <span class="logo-sub">2015/16</span>
+      </div>
+                </a>
+    </div>
+
+    <!-- РАЗДЕЛИТЕЛЬ -->
+    <div class="footer-divider"></div>
+
+    <!-- ИНТЕРЕСНЫЕ ЦИФРЫ -->
+    <div class="footer-col">
+      <h4>Интересные цифры<br>сезона 2015/2016</h4>
+      <ul>
+        <li>⚽️ 1043 гола забито за сезон</li>
+        <li>🔥 91 очко — чемпион Ла Лиги</li>
+        <li>🟨 1819 жёлтых карточек</li>
+      </ul>
+    </div>
+
+    <!-- КОНТАКТЫ -->
+    <div class="footer-col">
+      <h4>Наши контакты</h4>
+      <ul>
+        <li>Адрес: ул. Футбольная, д. 34</li>
+        <li>Тел: +7 (999) 602-32-14</li>
+        <li>Email: football2015@gmail.com</li>
+      </ul>
+    </div>
+
+    <!-- НАВИГАЦИЯ -->
+    <div class="footer-col">
+      <ul class="footer-links">
+        <li><a href="#news">Новости</a></li>
+        <li><a href="#teams">Команды</a></li>
+        <li><a href="#matches">Матчи</a></li>
+        <li><a href="#recordes">Рекорды</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
 
 <!-- ===== DATA FOR JS ===== -->
 <script>
