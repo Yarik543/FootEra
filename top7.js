@@ -44,3 +44,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     render(current);
 });
+

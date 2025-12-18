@@ -1,17 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".records-track");
-    if (!track) return;
+    const cards = document.querySelectorAll(".record-card");
+    const viewport = document.querySelector(".records-viewport");
 
-    const cards = track.querySelectorAll(".record-card");
+    if (!track || !cards.length || !viewport) return;
 
     let position = 0;
-    const speed = 0.5;
+    const speed = 0.75;
 
     function animate() {
         position -= speed;
         track.style.transform = `translateX(${position}px)`;
 
-        const centerX = window.innerWidth / 2;
+        const trackWidth = track.scrollWidth / 2;
+
+        // бесконечность без скачка
+        if (Math.abs(position) >= trackWidth) {
+            position = 0;
+        }
+
+        // центрирование
+        const viewportRect = viewport.getBoundingClientRect();
+        const centerX = viewportRect.left + viewportRect.width / 2;
 
         cards.forEach(card => {
             const rect = card.getBoundingClientRect();
@@ -24,10 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.classList.remove("is-center");
             }
         });
-
-        if (Math.abs(position) > track.scrollWidth / 2) {
-            position = 0;
-        }
 
         requestAnimationFrame(animate);
     }

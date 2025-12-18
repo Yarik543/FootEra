@@ -8,6 +8,36 @@ $dbname = "kasimbekov_yaroslav_FootEra";
 $conn = new mysqli($host, $user, $password, $dbname);
 $conn->set_charset("utf8");
 
+/* ===== MATCHES ===== */
+$sqlMatches = "
+SELECT 
+  m.MatchId,
+  m.MatchDate,
+  m.HomeGoals,
+  m.AwayGoals,
+  m.Stadium,
+
+  ht.Name AS HomeTeam,
+  ht.Logo AS HomeLogo,
+
+  at.Name AS AwayTeam,
+  at.Logo AS AwayLogo
+
+FROM Matches m
+JOIN Teams ht ON ht.TeamId = m.HomeTeamId
+JOIN Teams at ON at.TeamId = m.AwayTeamId
+
+ORDER BY m.MatchDate DESC
+LIMIT 5
+";
+
+$resultMatches = $conn->query($sqlMatches);
+$matches = [];
+
+while ($row = $resultMatches->fetch_assoc()) {
+  $matches[] = $row;
+}
+
 if ($conn->connect_error) {
   die("Ошибка подключения: " . $conn->connect_error);
 }
@@ -138,7 +168,6 @@ while ($row = $result->fetch_assoc()) {
   <div class="container">
     <h2 class="records-title">Сезонные рекорды La Liga 2015/2016</h2>
     <p class="records-subtitle">Самые яркие достижения игроков и команд</p>
-  </div>
 
   <div class="records-stats">
   <div class="records-stat">
@@ -166,10 +195,12 @@ while ($row = $result->fetch_assoc()) {
   </div>
 </div>
 
-  <div class="records-slider">
-    <div class="records-track">
+  <div class="records-slider-wrapper">
+  <div class="container records-container">
+    <div class="records-viewport">
+      <div class="records-track">
 
-      <div class="record-card">
+        <div class="record-card">
         <img src="/players-record-image/godin3.jpg">
         <span>Лучший защитник сезона</span>
         <h4>Diego Godín</h4>
@@ -183,7 +214,7 @@ while ($row = $result->fetch_assoc()) {
 
       <div class="record-card">
         <img src="/players-record-image/neymar.jpg">
-        <span>164 успешных обводки — лучший дриблёр</span>
+        <span>164 успешные обводки — лучший дриблёр</span>
         <h4>Neymar Jr</h4>
       </div>
 
@@ -197,11 +228,167 @@ while ($row = $result->fetch_assoc()) {
         <img src="/players-record-image/Carrasco.jpg">
         <span>Самый быстрый <br> гол сезона — 1:22</span>
         <h4>Yannick Carrasco</h4>
-      </div>
 
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<section class="matches">
+  <div class="container">
+
+    <div class="matches-header">
+      <h2>Ключевые матчи сезона</h2>
+      <p>Матчи, которые определили исход Ла Лиги 2015/2016</p>
+    </div>
+
+    <div class="matches-slider">
+      <div class="matches-cards">
+
+        <?php foreach ($matches as $i => $match): ?>
+          <div class="match-card <?= $i === 0 ? 'active' : '' ?>">
+
+            <!-- ЛЕВАЯ ЧАСТЬ -->
+            <div class="match-left">
+              <span class="match-date">
+                <?= date("d.m.Y", strtotime($match['MatchDate'])) ?>
+              </span>
+
+              <h3 class="match-teams">
+                <?= $match['HomeTeam'] ?> — <?= $match['AwayTeam'] ?>
+              </h3>
+
+              <div class="match-score">
+                <img src="team-logo/<?= $match['HomeLogo'] ?>" alt="">
+                <strong><?= $match['HomeGoals'] ?> : <?= $match['AwayGoals'] ?></strong>
+                <img src="team-logo/<?= $match['AwayLogo'] ?>" alt="">
+              </div>
+
+              <!-- СТАДИОН ПО ЦЕНТРУ -->
+              <div class="match-stadium">
+                <span>🏟 Стадион</span>
+                <p><?= $match['Stadium'] ?></p>
+              </div>
+            </div>
+
+            <!-- ПРАВАЯ ЧАСТЬ -->
+            <div class="match-right">
+
+              <!-- СТАТИСТИКА (НЕ ИЗ БД) -->
+              <div class="match-stats">
+                <div>
+                  <strong>56%</strong>
+                  <span>Владение</span>
+                  <strong>44%</strong>
+                </div>
+                <div>
+                  <strong>15</strong>
+                  <span>Удары</span>
+                  <strong>10</strong>
+                </div>
+              </div>
+
+              <!-- РАЗНОЕ ОПИСАНИЕ -->
+              <p class="match-desc">
+                <?php
+                  $descs = [
+                    "Матч с высокой интенсивностью, в котором исход решился во втором тайме.",
+                    "Тактическое противостояние, где одна ошибка стоила сопернику очков.",
+                    "Один из самых напряжённых матчей сезона с драматичной концовкой.",
+                    "Равная игра, в которой ключевую роль сыграли стандарты.",
+                    "Матч, укрепивший позиции лидера в чемпионской гонке."
+                  ];
+                  echo $descs[$i % count($descs)];
+                ?>
+              </p>
+
+              <a href="#" class="match-btn">Смотреть обзор</a>
+            </div>
+
+          </div>
+        <?php endforeach; ?>
+
+      </div>
+
+      <!-- СТРЕЛКИ -->
+      <div class="matches-arrows">
+        <span class="match-arrow prev">&#10094;</span>
+        <span class="match-arrow next">&#10095;</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="season-news">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Главные новости сезона</h2>
+    </div>
+
+    <div class="news-list">
+
+  <div class="news-card">
+    <div class="news-image"><img src="/image/barca1.jpg" alt = "barca"></div>
+
+    <div class="news-content">
+      <h3>Барселона выходит на первое место</h3>
+      <span class="news-date">20 марта 2016</span>
+
+      <div class="news-more">
+        <p>
+          Каталонцы одержали важную победу в концовке сезона,
+          которая позволила команде выйти в лидеры чемпионата.
+          Матч стал переломным моментом в чемпионской гонке.
+        </p>
+      </div>
+    </div>
+
+    <button class="news-btn">Читать</button>
+  </div>
+
+  <div class="news-card">
+    <div class="news-image"><img src="/image/real.jpg" alt="real"></div>
+
+    <div class="news-content">
+      <h3>Реал теряет очки в выездном матче</h3>
+      <span class="news-date">3 апреля 2016</span>
+
+      <div class="news-more">
+        <p>
+          Неожиданная осечка мадридского клуба позволила конкурентам
+          сократить отставание в турнирной таблице.
+        </p>
+      </div>
+    </div>
+
+    <button class="news-btn">Читать</button>
+  </div>
+
+  <div class="news-card">
+    <div class="news-image"><img src="/image/atletic.jpg" alt = "atletic"></div>
+                  
+    <div class="news-content">
+      <h3>Атлетико продолжает погоню за лидерами</h3>
+      <span class="news-date">10 апреля 2016</span>
+
+      <div class="news-more">
+        <p>
+          Команда Симеоне демонстрирует стабильную форму
+          и остаётся в борьбе за чемпионство.
+        </p>
+      </div>
+    </div>
+
+    <button class="news-btn">Читать</button>
+  </div>
+
+</div>
+</section>
+
 <!-- ===== DATA FOR JS ===== -->
 <script>
 const teams = <?= json_encode($teams, JSON_UNESCAPED_UNICODE); ?>;
@@ -209,6 +396,8 @@ const teams = <?= json_encode($teams, JSON_UNESCAPED_UNICODE); ?>;
 
 <script src="top7.js"></script>
 <script src="records.js"></script>
+<script src="matches.js"></script>
+<script src="news.js"></script>
 
 </body>
 </html>

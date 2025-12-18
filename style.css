@@ -383,7 +383,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 60px;
-  margin: 40px 0 90px;
+  margin: 40px 0 60px;
 }
 
 .records-stat {
@@ -410,4 +410,378 @@ body {
   font-size: 13px;
   opacity: 0.75;
   margin-top: 4px;
+}
+
+/* ===== FULL WIDTH WRAPPER ===== */
+.records-slider-wrapper {
+  width: 95%;
+}
+
+/* ❗ именно контейнер режет */
+.records-container {
+  overflow: hidden;
+}
+
+/* масштаб НЕ режем */
+.records-viewport {
+  overflow: visible;
+  padding: 50px 0;
+}
+
+/* track как был */
+.records-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+}
+
+/* ===== CARD ===== */
+.record-card {
+  width: 220px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.5;
+}
+
+.record-card.is-center {
+  transform: scale(1.18);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* ===== MATCHES SECTION ===== */
+.matches {
+  padding: 120px 0;
+}
+
+.matches-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.matches-header h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.matches-header p {
+  opacity: 0.75;
+}
+
+/* ===== SLIDER ===== */
+.matches-slider {
+  position: relative;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.matches-cards {
+  position: relative;
+  height: 340px;
+}
+
+/* ===== CARD ===== */
+.match-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 32px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 0.4s ease;
+}
+
+.match-card.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ===== LEFT ===== */
+.match-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-date {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 14px;
+}
+
+.match-teams {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.match-score {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.match-score img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.match-score strong {
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+}
+
+.match-stadium {
+  font-size: 14px;
+  opacity: 0.7;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ===== RIGHT ===== */
+.match-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.match-video {
+  height: 180px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  opacity: 0.7;
+}
+
+.match-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 20px 0;
+}
+
+.match-btn {
+  align-self: flex-start;
+  padding: 12px 32px;
+  background: #ca9b12;
+  color: #0a0b1f;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* ===== ARROWS ===== */
+.matches-arrows {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.match-arrow {
+  pointer-events: auto;
+  font-size: 32px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.match-arrow:hover {
+  opacity: 1;
+}
+
+.match-stadium {
+  text-align: center;
+  margin-top: 14px;
+}
+
+.match-stadium span {
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.match-stadium p {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* СТАТИСТИКА */
+.match-stats {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #cfd3ff;
+  font-size: 14px;
+}
+
+.match-stats div {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.match-stats div strong:first-child {
+  text-align: right;
+}
+
+.match-stats div span {
+  padding: 0 16px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.match-stats div strong:last-child {
+  text-align: left;
+}
+
+/* ОПИСАНИЕ */
+.match-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* ===== NEWS SECTION ===== */
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.news {
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.news-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.news-header h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.news-header p {
+  color: #a5abcf;
+  font-size: 16px;
+}
+
+/* карточка */
+.news-card {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  align-items: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: linear-gradient(180deg, #1c2138, #15192d);
+  border-radius: 18px;
+  padding: 25px 30px;
+  margin-bottom: 22px;
+
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.news-card:hover {
+  background: linear-gradient(180deg, #00020d, #171c3a);
+}
+
+/* изображение */
+.news-image {
+  width: 140px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* контент */
+.news-content h3 {
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+
+.news-date {
+  font-size: 14px;
+  color: #9aa0c3;
+}
+
+/* скрытый текст */
+.news-more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease, margin-top 0.45s ease;
+}
+
+.news-card.open .news-more {
+  max-height: 220px;
+  margin-top: 14px;
+}
+
+.news-more p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #cfd3ff;
+}
+
+/* кнопка */
+.news-btn {
+  background: #d4a017;
+  color: #000;
+  padding: 11px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.news-btn:hover {
+  background: #e8b52a;
+}
+
+.news .container {
+  width: 100%;
 }
