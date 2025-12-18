@@ -134,12 +134,81 @@ while ($row = $result->fetch_assoc()) {
   </div>
 </section>
 
+<section class="records">
+  <div class="container">
+    <h2 class="records-title">Сезонные рекорды La Liga 2015/2016</h2>
+    <p class="records-subtitle">Самые яркие достижения игроков и команд</p>
+  </div>
+
+  <div class="records-stats">
+  <div class="records-stat">
+    <span class="stat-icon">🏆</span>
+    <div>
+      <strong>Лучший бомбардир</strong>
+      <p>Luis Suárez · 40 голов</p>
+    </div>
+  </div>
+
+  <div class="records-stat">
+    <span class="stat-icon">🎯</span>
+    <div>
+      <strong>Лидер по ассистам</strong>
+      <p>Lionel Messi · 16 передач</p>
+    </div>
+  </div>
+
+  <div class="records-stat">
+    <span class="stat-icon">🛡️</span>
+    <div>
+      <strong>Лучшая оборона</strong>
+      <p>Atlético Madrid · 18 пропущенных</p>
+    </div>
+  </div>
+</div>
+
+  <div class="records-slider">
+    <div class="records-track">
+
+      <div class="record-card">
+        <img src="/players-record-image/godin3.jpg">
+        <span>Лучший защитник сезона</span>
+        <h4>Diego Godín</h4>
+      </div>
+
+      <div class="record-card">
+        <img src="/players-record-image/oblac_mask.jpg">
+        <span>0.47 GA — лучшая оборона сезона</span>
+        <h4>Jan Oblak</h4>
+      </div>
+
+      <div class="record-card">
+        <img src="/players-record-image/neymar.jpg">
+        <span>164 успешных обводки — лучший дриблёр</span>
+        <h4>Neymar Jr</h4>
+      </div>
+
+      <div class="record-card">
+        <img src="/players-record-image/modric_mask.jpg">
+        <span>90.5% точных передач — лидер по пасам</span>
+        <h4>Luka Modrić</h4>
+      </div>
+
+      <div class="record-card">
+        <img src="/players-record-image/Carrasco.jpg">
+        <span>Самый быстрый <br> гол сезона — 1:22</span>
+        <h4>Yannick Carrasco</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
 <!-- ===== DATA FOR JS ===== -->
 <script>
 const teams = <?= json_encode($teams, JSON_UNESCAPED_UNICODE); ?>;
 </script>
 
 <script src="top7.js"></script>
+<script src="records.js"></script>
 
 </body>
 </html>

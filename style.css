@@ -197,7 +197,6 @@ body {
 /* ===== TOP 7 ===== */
 .top7 {
   padding: 100px 0;
-  background: linear-gradient(180deg, #0a0b1f 0%, #0d1029 100%);
 }
 
 .top7-grid {
@@ -308,4 +307,107 @@ body {
   max-height: 90%;
   object-fit: contain;
   transition: opacity 0.2s ease;
+}
+
+.records {
+  padding: 120px 0;
+  background: linear-gradient(180deg, #0a0b1f 0%, #0d1029 100%);
+}
+
+.records-title {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 36px;
+}
+
+.records-subtitle {
+  text-align: center;
+  opacity: 0.75;
+  margin-bottom: 40px;
+}
+
+/* ===== SLIDER ===== */
+.records-slider {
+  position: relative;
+  overflow: visible; /* ❗ ВАЖНО */
+}
+
+.records-track {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  will-change: transform;
+}
+
+/* ===== CARD ===== */
+.record-card {
+  width: 220px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.5;
+}
+
+.record-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.record-card span {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #ca9b12;
+}
+
+.record-card h4 {
+  margin-top: 6px;
+  font-family: "Oswald", sans-serif;
+}
+
+/* ===== CENTER EFFECT ===== */
+.record-card.is-center {
+  transform: scale(1.18);
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(202, 155, 18, 0.6);
+  z-index: 2;
+}
+
+/* ===== RECORDS STATS ===== */
+.records-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 40px 0 90px;
+}
+
+.records-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  min-width: 260px;
+}
+
+.stat-icon {
+  font-size: 28px;
+  color: #ca9b12;
+}
+
+.records-stat strong {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.records-stat p {
+  font-size: 13px;
+  opacity: 0.75;
+  margin-top: 4px;
 }
